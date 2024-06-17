@@ -1,0 +1,102 @@
+<mxfile host="app.diagrams.net" modified="2024-06-17T18:01:59.850Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0" etag="Os-ECundznL8CqwGvASS" version="24.5.3" type="device">
+  <diagram name="Página-1" id="3XyiAzxiARzSZm1NmoLg">
+    <mxGraphModel dx="961" dy="613" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="KyuDseGVAe3piVjU8mLy-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyuDseGVAe3piVjU8mLy-1" target="KyuDseGVAe3piVjU8mLy-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-14" value="CRUD de Apps" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyuDseGVAe3piVjU8mLy-5">
+          <mxGeometry x="0.1103" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyuDseGVAe3piVjU8mLy-1" target="KyuDseGVAe3piVjU8mLy-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-12" value="Validar assinatura" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyuDseGVAe3piVjU8mLy-8">
+          <mxGeometry x="-0.0462" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyuDseGVAe3piVjU8mLy-1" target="KyuDseGVAe3piVjU8mLy-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="320" />
+              <mxPoint x="480" y="180" />
+              <mxPoint x="414" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-20" value="CRUD de Clientes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyuDseGVAe3piVjU8mLy-19">
+          <mxGeometry x="-0.398" y="-3" relative="1" as="geometry">
+            <mxPoint x="1" y="13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyuDseGVAe3piVjU8mLy-1" target="KyuDseGVAe3piVjU8mLy-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="320" />
+              <mxPoint x="350" y="180" />
+              <mxPoint x="414" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-22" value="CRUD de assinaturas" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyuDseGVAe3piVjU8mLy-21">
+          <mxGeometry x="-0.5277" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyuDseGVAe3piVjU8mLy-1" target="KyuDseGVAe3piVjU8mLy-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="350" />
+              <mxPoint x="280" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-24" value="Login" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyuDseGVAe3piVjU8mLy-23">
+          <mxGeometry x="-0.1399" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="KyuDseGVAe3piVjU8mLy-1" target="KyuDseGVAe3piVjU8mLy-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="350" />
+              <mxPoint x="550" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-28" value="Cadastro de usuário" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyuDseGVAe3piVjU8mLy-27">
+          <mxGeometry x="-0.0158" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-1" value="API&lt;div&gt;(Sprint Boot)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="320" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-2" value="Aplicação Web&lt;div&gt;(Angular)&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="354" y="70" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-7" value="Aplicativos&lt;div&gt;(React Native)&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="354" y="510" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.007;entryY=0.442;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="KyuDseGVAe3piVjU8mLy-1" target="KyuDseGVAe3piVjU8mLy-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="350" />
+              <mxPoint x="280" y="105" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KyuDseGVAe3piVjU8mLy-26" value="Login" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="KyuDseGVAe3piVjU8mLy-25">
+          <mxGeometry x="-0.0368" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

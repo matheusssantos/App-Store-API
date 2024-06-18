@@ -9,6 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,15 +23,6 @@ public class Subscription {
   private Integer id;
 
   @Column(nullable = false)
-  private Integer userId;
-
-  @Column(nullable = false)
-  private Integer appId;
-
-  @Column(nullable = false)
-  private Integer planId;
-
-  @Column(nullable = false)
   private LocalDate duaDate;
   
   @Column(nullable = false)
@@ -37,15 +31,31 @@ public class Subscription {
   @Column(nullable = false)
   private SubscriptionStatusEnum status;
 
+  @ManyToOne
+  @JoinColumn(name = "appId", nullable = false)
+  private App app;
+ 
+  @ManyToOne
+  @JoinColumn(name = "planId", nullable = false)
+  private Plan plan;
+  
+  @ManyToOne
+  @JoinColumn(name = "clientId", nullable = false)
+  private Client client; 
+
+  @OneToOne(mappedBy = "subscription")
+  private Payment payment;
+
   protected Subscription() {}
 
-  public Subscription(Integer id, Integer userId, Integer appId, Integer planId, LocalDate duaDate) {
+  public Subscription(Integer id, LocalDate duaDate, Client client, App app, Plan plan, Payment payment) {
     this.id = id;
-    this.userId = userId;
-    this.appId = appId;
-    this.planId = planId;
     this.duaDate = duaDate;
     this.startDate = LocalDate.now();
     this.status = SubscriptionStatusEnum.NEW;
+    this.app = app;
+    this.plan = plan;
+    this.client = client;
+    this.payment = payment;
   }
 }

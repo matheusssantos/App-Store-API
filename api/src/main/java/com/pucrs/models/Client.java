@@ -1,10 +1,14 @@
 package com.pucrs.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +30,12 @@ public class Client {
   
   @Column
   private String token;
+
+  @OneToMany(mappedBy = "client")
+  private List<Payment> payments = new ArrayList<Payment>();
+
+  @OneToMany(mappedBy = "client")
+  private List<Subscription> subscriptions = new ArrayList<Subscription>();
 
   protected Client() {}
 

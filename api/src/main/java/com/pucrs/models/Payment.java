@@ -9,6 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,12 +21,6 @@ public class Payment {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-
-  @Column(nullable = false)
-  private Integer subscriptionID;
-
-  @Column(nullable = false)
-  private Integer clientId;
 
   @Column(nullable = false)
   private Float value;
@@ -37,12 +34,20 @@ public class Payment {
   @Column
   private String discountCode;
 
+  @ManyToOne
+  @JoinColumn(name = "clientId", nullable = false)
+  private Client client;
+
+  @OneToOne
+  @JoinColumn(name = "subscriptionId", nullable = false)
+  private Subscription subscription;
+
   protected Payment() {}
 
-  public Payment(Integer id, Integer subscriptionID, Integer clientId, Float value, PaymentMethodEnum method, String discountCode) {
+  public Payment(Integer id, Float value, PaymentMethodEnum method, String discountCode, Client client, Subscription subscription) {
     this.id = id;
-    this.subscriptionID = subscriptionID;
-    this.clientId = clientId;
+    this.client = client;
+    this.subscription = subscription;
     this.value = value;
     this.method = method;
     this.createdDate = LocalDate.now();

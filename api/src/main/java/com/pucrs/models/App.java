@@ -1,10 +1,17 @@
 package com.pucrs.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,9 +23,6 @@ public class App {
   private Integer id;
 
   @Column(nullable = false)
-  private Integer userId;
-
-  @Column(nullable = false)
   private String name;
   
   @Column(nullable = false)
@@ -27,11 +31,18 @@ public class App {
   @Column(nullable = false)
   private Float price;
 
+  @ManyToOne
+  @JoinColumn(name = "userId", nullable = false)
+  private User user;
+  
+  @OneToMany(mappedBy = "app", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Subscription> subscriptions = new ArrayList<Subscription>();
+
   protected App() {}
 
-  public App(Integer id, Integer userId, String name, String description, Float price) {
+  public App(Integer id, String name, String description, Float price, User user) {
     this.id = id;
-    this.userId = userId;
+    this.user = user;
     this.name = name;
     this.description = description;
     this.price = price;

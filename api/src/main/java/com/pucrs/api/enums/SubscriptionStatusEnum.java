@@ -1,4 +1,4 @@
-package com.pucrs.enums;
+package com.pucrs.api.enums;
 
 public enum SubscriptionStatusEnum {
   NEW(0),

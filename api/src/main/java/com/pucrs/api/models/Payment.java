@@ -1,8 +1,8 @@
-package com.pucrs.models;
+package com.pucrs.api.models;
 
 import java.time.LocalDate;
 
-import com.pucrs.enums.PaymentMethodEnum;
+import com.pucrs.api.enums.PaymentMethodEnum;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

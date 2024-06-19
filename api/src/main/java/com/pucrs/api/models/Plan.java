@@ -1,4 +1,4 @@
-package com.pucrs.models;
+package com.pucrs.api.models;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.pucrs.models;
+package com.pucrs.api.models;
 
 import java.time.LocalDate;
 
-import com.pucrs.enums.SubscriptionStatusEnum;
+import com.pucrs.api.enums.SubscriptionStatusEnum;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

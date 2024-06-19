@@ -39,4 +39,44 @@ public class User {
     this.name = name;
     this.password = password;
   }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public List<App> getApps() {
+    return apps;
+  }
+
+  public void setApps(List<App> apps) {
+    this.apps = apps;
+  }
+
+  public List<Plan> getPlans() {
+    return plans;
+  }
+
+  public void setPlans(List<Plan> plans) {
+    this.plans = plans;
+  }
 } 

@@ -53,4 +53,60 @@ public class Payment {
     this.createdDate = LocalDate.now();
     this.discountCode = discountCode;
   }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public Float getValue() {
+    return value;
+  }
+
+  public void setValue(Float value) {
+    this.value = value;
+  }
+
+  public PaymentMethodEnum getMethod() {
+    return method;
+  }
+
+  public void setMethod(PaymentMethodEnum method) {
+    this.method = method;
+  }
+
+  public LocalDate getCreatedDate() {
+    return createdDate;
+  }
+
+  public void setCreatedDate(LocalDate createdDate) {
+    this.createdDate = createdDate;
+  }
+
+  public String getDiscountCode() {
+    return discountCode;
+  }
+
+  public void setDiscountCode(String discountCode) {
+    this.discountCode = discountCode;
+  }
+
+  public Client getClient() {
+    return client;
+  }
+
+  public void setClient(Client client) {
+    this.client = client;
+  }
+
+  public Subscription getSubscription() {
+    return subscription;
+  }
+
+  public void setSubscription(Subscription subscription) {
+    this.subscription = subscription;
+  }
 }

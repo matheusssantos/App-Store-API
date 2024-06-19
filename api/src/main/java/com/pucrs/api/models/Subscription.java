@@ -58,4 +58,68 @@ public class Subscription {
     this.client = client;
     this.payment = payment;
   }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public LocalDate getDuaDate() {
+    return duaDate;
+  }
+
+  public void setDuaDate(LocalDate duaDate) {
+    this.duaDate = duaDate;
+  }
+
+  public LocalDate getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
+  }
+
+  public SubscriptionStatusEnum getStatus() {
+    return status;
+  }
+
+  public void setStatus(SubscriptionStatusEnum status) {
+    this.status = status;
+  }
+
+  public App getApp() {
+    return app;
+  }
+
+  public void setApp(App app) {
+    this.app = app;
+  }
+
+  public Plan getPlan() {
+    return plan;
+  }
+
+  public void setPlan(Plan plan) {
+    this.plan = plan;
+  }
+
+  public Client getClient() {
+    return client;
+  }
+
+  public void setClient(Client client) {
+    this.client = client;
+  }
+
+  public Payment getPayment() {
+    return payment;
+  }
+
+  public void setPayment(Payment payment) {
+    this.payment = payment;
+  }
 }

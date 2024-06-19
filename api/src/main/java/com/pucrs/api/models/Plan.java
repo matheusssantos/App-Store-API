@@ -51,4 +51,60 @@ public class Plan {
     this.price = price;
     this.availableDays = availableDays;
   }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Float getDiscountPercent() {
+    return discountPercent;
+  }
+
+  public void setDiscountPercent(Float discountPercent) {
+    this.discountPercent = discountPercent;
+  }
+
+  public Float getPrice() {
+    return price;
+  }
+
+  public void setPrice(Float price) {
+    this.price = price;
+  }
+
+  public Integer getAvailableDays() {
+    return availableDays;
+  }
+
+  public void setAvailableDays(Integer availableDays) {
+    this.availableDays = availableDays;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public List<Subscription> getSubscriptions() {
+    return subscriptions;
+  }
+
+  public void setSubscriptions(List<Subscription> subscriptions) {
+    this.subscriptions = subscriptions;
+  }
 }

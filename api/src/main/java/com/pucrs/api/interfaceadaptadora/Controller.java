@@ -45,7 +45,7 @@ public class Controller {
     @GetMapping("servcad/assinaturas/{tipo}")
     @CrossOrigin(origins="*")    
     public List<Subscription> getClientSubcriptions() {
-        
+        return null;
     }
 
     @GetMapping("teste")

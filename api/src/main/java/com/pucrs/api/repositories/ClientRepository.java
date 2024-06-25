@@ -10,9 +10,9 @@ import com.pucrs.api.models.Client;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer> {
 
-  List<Client> todos();
+  // List<Client> todos();
   
-  void cadastrar(Client c);
+  // void cadastrar(Client c);
   
-  Client acharPorId(Integer id);
+  // Client acharPorId(Integer id);
 }

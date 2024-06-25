@@ -11,11 +11,11 @@ import com.pucrs.api.models.Subscription;
 @Repository
 public interface AppRepository extends JpaRepository<App, Integer> {
 
-  List<App> todos();
+  // List<App> todos();
 
-  App acharPorId(Integer id);
+  // App acharPorId(Integer id);
   
-  App atualizaCusto(Integer idApp, Float custo);
+  // App atualizaCusto(Integer idApp, Float custo);
   
-  List<Subscription> listaAssinaturasApp(Integer id);
+  // List<Subscription> listaAssinaturasApp(Integer id);
 }

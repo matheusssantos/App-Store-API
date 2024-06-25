@@ -10,9 +10,9 @@ import com.pucrs.api.models.Payment;
 
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, Integer> {
-  List<Payment> todos();
+  // List<Payment> todos();
 
-  Payment acharPorId(Integer id);
+  // Payment acharPorId(Integer id);
   
-  void registraPagamento(LocalDate data, Integer codApp, Float valorPago);
+  // void registraPagamento(LocalDate data, Integer codApp, Float valorPago);
 }

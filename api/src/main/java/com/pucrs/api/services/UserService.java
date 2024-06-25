@@ -16,18 +16,15 @@ public class UserService {
 
   public UserService(UserRepository userRepository) {
     this.userRepository = userRepository;
-}
+  }
 
-
-public List<User> todos() {
+  public List<User> todos() {
     return userRepository.findAll();
-}
+  }
 
-
-public User acharPorId(Integer id) {
+  public User acharPorId(Integer id) {
     return userRepository.findById(id).orElse(null);
-}
-
+  }
 }
 
 

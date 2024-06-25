@@ -30,50 +30,50 @@ public class Controller {
     private SubscriptionRepository subscriptionRep;
 
 
-    public Controller(ClientRepository rep) {
-        this.clientRep = rep;
-    }
+    // public Controller(ClientRepository rep) {
+    //     this.clientRep = rep;
+    // }
 
-    @GetMapping("servcad/clientes")
-    @CrossOrigin(origins="*")
-    public List<Client> getClients() {
-        return clientRep.findAll();
-    }
+    // @GetMapping("servcad/clientes")
+    // @CrossOrigin(origins="*")
+    // public List<Client> getClients() {
+    //     return clientRep.findAll();
+    // }
 
-    @GetMapping("servcad/aplicativos")
-    @CrossOrigin(origins="*")
-    public List<App> getApplicativos() {
-        return appRep.findAll();
-    }
+    // @GetMapping("servcad/aplicativos")
+    // @CrossOrigin(origins="*")
+    // public List<App> getApplicativos() {
+    //     return appRep.findAll();
+    // }
 
-    @GetMapping("servcad/assinaturas/{tipo}")
-    @CrossOrigin(origins="*")    
-    public List<Subscription> getSubcriptionsByType(@PathVariable("tipo") String tipo) {
-        return subscriptionRep.findByType(tipo);
-    }
+    // @GetMapping("servcad/assinaturas/{tipo}")
+    // @CrossOrigin(origins="*")    
+    // public List<Subscription> getSubcriptionsByType(@PathVariable("tipo") String tipo) {
+    //     return subscriptionRep.findByType(tipo);
+    // }
 
-    @GetMapping("servcad/asscli/{codClient}")
-    @CrossOrigin(origins="*")    
-    public List<Subscription> getSubscriptionByClient(@PathVariable("codClient") Integer codClient) {
-        return subscriptionRep.findByClient(codClient);
-    }
+    // @GetMapping("servcad/asscli/{codClient}")
+    // @CrossOrigin(origins="*")    
+    // public List<Subscription> getSubscriptionByClient(@PathVariable("codClient") Integer codClient) {
+    //     return subscriptionRep.findByClient(codClient);
+    // }
 
-    @GetMapping("servcad/assapp/{codApp}")
-    @CrossOrigin(origins="*")    
-    public List<Subscription> getSubscriptionByApp(@PathVariable("codApp") Integer codApp) {
-        return subscriptionRep.findByApp(codApp);
-    }
+    // @GetMapping("servcad/assapp/{codApp}")
+    // @CrossOrigin(origins="*")    
+    // public List<Subscription> getSubscriptionByApp(@PathVariable("codApp") Integer codApp) {
+    //     return subscriptionRep.findByApp(codApp);
+    // }
 
-    @GetMapping("assinvalida/{codSubscription}")
-    @CrossOrigin(origins="*")    
-    public boolean getSubscriptionIsActive(@PathVariable("codSubscription") Integer codSubscription) {
-        return subscriptionRep.isActive(codSubscription);
-    }
+    // @GetMapping("assinvalida/{codSubscription}")
+    // @CrossOrigin(origins="*")    
+    // public boolean getSubscriptionIsActive(@PathVariable("codSubscription") Integer codSubscription) {
+    //     return subscriptionRep.isActive(codSubscription);
+    // }
 
-    @GetMapping("teste")
-    @CrossOrigin(origins="*")
-    public void cadastrar() {
-        Client c = new Client(1, "nome", "email", "senha", null);
-        clientRep.save(c);
-    }
+    // @GetMapping("teste")
+    // @CrossOrigin(origins="*")
+    // public void cadastrar() {
+    //     Client c = new Client(1, "nome", "email", "senha", null);
+    //     clientRep.save(c);
+    // }
 }

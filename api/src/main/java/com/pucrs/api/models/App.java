@@ -3,6 +3,8 @@ package com.pucrs.api.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,10 +33,12 @@ public class App {
   @Column(nullable = false)
   private Float price;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "userId", nullable = false)
   private User user;
   
+  @JsonIgnore
   @OneToMany(mappedBy = "app", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Subscription> subscriptions = new ArrayList<Subscription>();
 

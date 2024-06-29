@@ -2,6 +2,7 @@ package com.pucrs.api.models;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pucrs.api.enums.PaymentMethodEnum;
 
 import jakarta.persistence.Column;
@@ -34,10 +35,12 @@ public class Payment {
   @Column
   private String discountCode;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "clientId", nullable = false)
   private Client client;
 
+  @JsonIgnore
   @OneToOne
   @JoinColumn(name = "subscriptionId", nullable = false)
   private Subscription subscription;

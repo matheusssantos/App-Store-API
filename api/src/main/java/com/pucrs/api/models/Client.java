@@ -3,6 +3,8 @@ package com.pucrs.api.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,9 +33,11 @@ public class Client {
   @Column
   private String token;
 
+  @JsonIgnore
   @OneToMany(mappedBy = "client")
   private List<Payment> payments = new ArrayList<Payment>();
 
+  @JsonIgnore
   @OneToMany(mappedBy = "client")
   private List<Subscription> subscriptions = new ArrayList<Subscription>();
 

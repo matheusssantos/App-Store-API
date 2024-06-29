@@ -2,6 +2,7 @@ package com.pucrs.api.models;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pucrs.api.enums.SubscriptionStatusEnum;
 
 import jakarta.persistence.Column;
@@ -31,18 +32,22 @@ public class Subscription {
   @Column(nullable = false)
   private SubscriptionStatusEnum status;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "appId", nullable = false)
   private App app;
  
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "planId", nullable = false)
   private Plan plan;
   
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "clientId", nullable = false)
   private Client client; 
 
+  @JsonIgnore
   @OneToOne(mappedBy = "subscription")
   private Payment payment;
 

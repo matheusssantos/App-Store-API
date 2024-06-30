@@ -1,16 +1,21 @@
 package com.pucrs.api.interfaceadaptadora;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pucrs.api.enums.SubscriptionStatusEnum;
 import com.pucrs.api.models.App;
+import com.pucrs.api.models.Plan;
 import com.pucrs.api.models.Client;
+import com.pucrs.api.models.Payment;
 import com.pucrs.api.models.Subscription;
 import com.pucrs.api.repositories.AppRepository;
 import com.pucrs.api.repositories.ClientRepository;
@@ -96,6 +101,45 @@ public class Controller {
             return false;
         }
         return sub.getStatus() == SubscriptionStatusEnum.ACTIVE;
+    }
+
+    @PostMapping("registrarpagamento")
+    @CrossOrigin(origins="*")
+    public String registerPayment(@RequestBody Map<String, Object> msgBody) {
+        /* corpo da mensagem de retorno:
+         * "status": status [PAGAMENTO_OK | VALOR_INCORRETO],
+         * "data": nova data de vencimento da assinatura,
+         * "valor_estornado": valor devolvido ao pagante. 0 em caso de PAGAMENTO_OK.
+         */
+        Float valorPago = Float.valueOf((String) msgBody.get("valorPago"));
+
+        Subscription subs = subscriptionService.acharPorId((Integer) msgBody.get("codass"));
+        String res = "";
+        
+        if (subs == null) {
+            res = "{\"status\":\"ASS_INEXISTENTE\",\"data\":null,\"valor_estornado\":" + "\"" + valorPago.toString() + "\"}";
+            return res;
+        }
+        
+        String status = "";
+        LocalDate dataPagamento = LocalDate.of(
+            (Integer) msgBody.get("ano"),
+            (Integer) msgBody.get("mes"),
+            (Integer) msgBody.get("dia")
+        );
+
+        Payment pagamento = paymentService.registraPagamento(dataPagamento, subs, valorPago);
+        Float estornado = 0.0f;
+
+        if (pagamento == null) {
+            status = "VALOR_INCORRETO";
+            estornado = valorPago;
+        } else {
+            status = "PAGAMENTO_OK";
+            subs = subscriptionService.atualiza(subs, pagamento);
+        }
+        res = "{\"status\":" + "\"" + status + "\"" + ",\"data\":" + "\"" + subs.getDuaDate().toString() + "\"" + ",\"valor_estornado\":" + "\"" + estornado.toString() + "\"}";
+        return res;
     }
 
     // @GetMapping("teste")

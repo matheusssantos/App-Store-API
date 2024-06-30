@@ -48,13 +48,6 @@ public Subscription atualiza(Subscription subs, Payment pagamento) {
     return subscriptionRepository.save(subs);
 }
 
-
-public Subscription criaAssinatura(Client cli, App app) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'criaAssinatura'");
-}
-
-
 public List<Subscription> assinaturasConformeTipo(String tipo) {
     SubscriptionStatusEnum status = null;
 
@@ -75,6 +68,10 @@ public List<Subscription> assinaturasConformeTipo(String tipo) {
     return subscriptionRepository.findAll().stream()
                            .filter(sub -> sub.getStatus() == stat)
                            .toList();
+}
+
+public Subscription save(Subscription subscription) {
+    return subscriptionRepository.save(subscription);
 }
 
 }

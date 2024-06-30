@@ -56,6 +56,10 @@ public class Plan {
     this.availableDays = availableDays;
   }
 
+  public Plan(Integer id){
+    this.id = id;
+  }
+
   public Integer getId() {
     return id;
   }

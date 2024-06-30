@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pucrs.api.enums.SubscriptionStatusEnum;
 import com.pucrs.api.models.App;
+import com.pucrs.api.models.User;
 import com.pucrs.api.models.Plan;
 import com.pucrs.api.models.Client;
 import com.pucrs.api.models.Payment;
@@ -141,6 +143,31 @@ public class Controller {
         res = "{\"status\":" + "\"" + status + "\"" + ",\"data\":" + "\"" + subs.getDuaDate().toString() + "\"" + ",\"valor_estornado\":" + "\"" + estornado.toString() + "\"}";
         return res;
     }
+
+    @PostMapping("servcad/assinaturas")
+    @CrossOrigin(origins = "*")
+    public Subscription createSubscription(@RequestBody Map<String, Object> request) {
+        Integer codClient = (Integer) request.get("codClient");
+        Integer codApp = (Integer) request.get("codApp");
+    
+        Client client = clientService.acharPorId(codClient);
+        if (client == null) {
+            throw new IllegalArgumentException("Cliente não encontrado");
+        }
+        App app = appService.acharPorId(codApp);       
+        if (app == null) {
+            throw new IllegalArgumentException("Aplicativo não encontrado");
+        }
+        User user = app.getUser();
+        List<Plan> plansList = user.getPlans();
+        Plan p = plansList.get(0);
+        Subscription subscription = new Subscription(null, LocalDate.now().plusMonths(1), client, app, p, null);
+        subscription.setStartDate(LocalDate.now());
+        subscription.setStatus(SubscriptionStatusEnum.ACTIVE);
+    
+        return subscriptionService.save(subscription);
+    }
+
 
     // @GetMapping("teste")
     // @CrossOrigin(origins="*")

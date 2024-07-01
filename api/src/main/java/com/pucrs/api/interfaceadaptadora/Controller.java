@@ -169,6 +169,37 @@ public class Controller {
     }
 
 
+    @PostMapping("/servcad/aplicativos/atualizacusto/{idAplicativo}")
+    @CrossOrigin(origins = "*")
+   public App updateCost(@PathVariable(value = "idAplicativo") Integer idAplicativo,@RequestBody Map<String, Object> msgRequest) {
+    /*
+     * id = id do app
+     * name = nome do appw
+     * description = descricao do app
+     * price = preco do app (atualizado com o novo custo)
+     */
+
+    /*
+     * raw json
+     * {
+     * "custo" : (250.00)
+     * }
+     */
+
+
+    App app = appService.acharPorId(idAplicativo);
+    
+
+    if (app == null) {
+        throw new IllegalArgumentException("Aplicativo não encontrado");
+    }
+    
+
+    Float novoCusto = Float.valueOf((String) msgRequest.get("custo"));
+    appService.atualizaCusto(idAplicativo, novoCusto);
+    App updatedApp = appService.save(app);
+    return updatedApp;
+}
     // @GetMapping("teste")
     // @CrossOrigin(origins="*")
     // public void cadastrar() {

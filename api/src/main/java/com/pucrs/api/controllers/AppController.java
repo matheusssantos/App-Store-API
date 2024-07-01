@@ -28,7 +28,6 @@ public class AppController {
   }
 
   @PostMapping("/id/{idAplicativo}/update-custo")
-  @CrossOrigin(origins = "*")
   public App updateCost(@PathVariable(value = "idAplicativo") Integer idAplicativo, @RequestBody Map<String, Object> msgRequest) {
     App app = this.appService.acharPorId(idAplicativo);
 

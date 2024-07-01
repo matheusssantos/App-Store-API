@@ -26,7 +26,30 @@ public class ClientService {
         return clientRepository.findById(id).orElse(null);
     }
 
-    public void cadastrar(Client c) {
-        clientRepository.save(c);
+    public boolean create(Client c) {
+        try {
+            this.clientRepository.save(c);
+            return true;
+        } catch (Error error) {
+            return false;
+        }
+    }
+
+    public boolean verifyLogin(String email, String password) {
+        try {
+            Client client = this.clientRepository.findByEmail(email);
+            if (client.equals(null)) {
+                return false;
+            }
+
+            if (!client.getPassword().equals(password)) {
+                return false;
+            }
+
+            return true;
+        } catch (Error error) {
+            return false;
+        }
+
     }
 }

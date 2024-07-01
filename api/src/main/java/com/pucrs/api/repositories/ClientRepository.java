@@ -15,4 +15,6 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
   // void cadastrar(Client c);
   
   // Client acharPorId(Integer id);
+
+  Client findByEmail(String email);
 }

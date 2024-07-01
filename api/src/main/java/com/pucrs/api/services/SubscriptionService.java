@@ -1,5 +1,6 @@
 package com.pucrs.api.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.pucrs.api.enums.SubscriptionStatusEnum;
 import com.pucrs.api.models.App;
 import com.pucrs.api.models.Client;
+import com.pucrs.api.models.Payment;
+import com.pucrs.api.models.Plan;
 import com.pucrs.api.models.Subscription;
 import com.pucrs.api.repositories.SubscriptionRepository;
 
@@ -25,17 +28,25 @@ public List<Subscription> todos() {
     return subscriptionRepository.findAll();
 }
 
-
 public Subscription acharPorId(Integer id) {
     return subscriptionRepository.findById(id).orElse(null);
 }
 
+public Subscription atualiza(Subscription subs, Payment pagamento) {
+    Plan plano = subs.getPlan();
+    LocalDate dueDate = subs.getDuaDate();
+    LocalDate dataPagamento = pagamento.getCreatedDate();
 
-public Subscription criaAssinatura(Client cli, App app) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'criaAssinatura'");
+    if (dataPagamento.compareTo(dueDate) < 0) {
+        subs.setDuaDate(dueDate.plusDays(plano.getAvailableDays()));
+    } else {
+        subs.setDuaDate(dataPagamento.plusDays(plano.getAvailableDays()));
+    }
+
+    subs.setPayment(pagamento);
+    subs.setStatus(SubscriptionStatusEnum.ACTIVE);
+    return subscriptionRepository.save(subs);
 }
-
 
 public List<Subscription> assinaturasConformeTipo(String tipo) {
     SubscriptionStatusEnum status = null;
@@ -57,6 +68,10 @@ public List<Subscription> assinaturasConformeTipo(String tipo) {
     return subscriptionRepository.findAll().stream()
                            .filter(sub -> sub.getStatus() == stat)
                            .toList();
+}
+
+public Subscription save(Subscription subscription) {
+    return subscriptionRepository.save(subscription);
 }
 
 }

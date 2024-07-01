@@ -49,4 +49,8 @@ public App atualizaCusto(Integer idApp, Float custo) {
     return appRepository.save(aplicativo);
 }
 
+public App save(App app) {
+    return appRepository.save(app);
+}
+
 }

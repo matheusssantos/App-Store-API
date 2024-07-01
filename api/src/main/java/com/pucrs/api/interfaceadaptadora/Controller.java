@@ -1,16 +1,23 @@
 package com.pucrs.api.interfaceadaptadora;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pucrs.api.enums.SubscriptionStatusEnum;
 import com.pucrs.api.models.App;
+import com.pucrs.api.models.User;
+import com.pucrs.api.models.Plan;
 import com.pucrs.api.models.Client;
+import com.pucrs.api.models.Payment;
 import com.pucrs.api.models.Subscription;
 import com.pucrs.api.repositories.AppRepository;
 import com.pucrs.api.repositories.ClientRepository;
@@ -98,6 +105,101 @@ public class Controller {
         return sub.getStatus() == SubscriptionStatusEnum.ACTIVE;
     }
 
+    @PostMapping("registrarpagamento")
+    @CrossOrigin(origins="*")
+    public String registerPayment(@RequestBody Map<String, Object> msgBody) {
+        /* corpo da mensagem de retorno:
+         * "status": status [PAGAMENTO_OK | VALOR_INCORRETO],
+         * "data": nova data de vencimento da assinatura,
+         * "valor_estornado": valor devolvido ao pagante. 0 em caso de PAGAMENTO_OK.
+         */
+        Float valorPago = Float.valueOf((String) msgBody.get("valorPago"));
+
+        Subscription subs = subscriptionService.acharPorId((Integer) msgBody.get("codass"));
+        String res = "";
+        
+        if (subs == null) {
+            res = "{\"status\":\"ASS_INEXISTENTE\",\"data\":null,\"valor_estornado\":" + "\"" + valorPago.toString() + "\"}";
+            return res;
+        }
+        
+        String status = "";
+        LocalDate dataPagamento = LocalDate.of(
+            (Integer) msgBody.get("ano"),
+            (Integer) msgBody.get("mes"),
+            (Integer) msgBody.get("dia")
+        );
+
+        Payment pagamento = paymentService.registraPagamento(dataPagamento, subs, valorPago);
+        Float estornado = 0.0f;
+
+        if (pagamento == null) {
+            status = "VALOR_INCORRETO";
+            estornado = valorPago;
+        } else {
+            status = "PAGAMENTO_OK";
+            subs = subscriptionService.atualiza(subs, pagamento);
+        }
+        res = "{\"status\":" + "\"" + status + "\"" + ",\"data\":" + "\"" + subs.getDuaDate().toString() + "\"" + ",\"valor_estornado\":" + "\"" + estornado.toString() + "\"}";
+        return res;
+    }
+
+    @PostMapping("servcad/assinaturas")
+    @CrossOrigin(origins = "*")
+    public Subscription createSubscription(@RequestBody Map<String, Object> request) {
+        Integer codClient = (Integer) request.get("codClient");
+        Integer codApp = (Integer) request.get("codApp");
+    
+        Client client = clientService.acharPorId(codClient);
+        if (client == null) {
+            throw new IllegalArgumentException("Cliente não encontrado");
+        }
+        App app = appService.acharPorId(codApp);       
+        if (app == null) {
+            throw new IllegalArgumentException("Aplicativo não encontrado");
+        }
+        User user = app.getUser();
+        List<Plan> plansList = user.getPlans();
+        Plan p = plansList.get(0);
+        Subscription subscription = new Subscription(null, LocalDate.now().plusMonths(1), client, app, p, null);
+        subscription.setStartDate(LocalDate.now());
+        subscription.setStatus(SubscriptionStatusEnum.ACTIVE);
+    
+        return subscriptionService.save(subscription);
+    }
+
+
+    @PostMapping("/servcad/aplicativos/atualizacusto/{idAplicativo}")
+    @CrossOrigin(origins = "*")
+   public App updateCost(@PathVariable(value = "idAplicativo") Integer idAplicativo,@RequestBody Map<String, Object> msgRequest) {
+    /*
+     * id = id do app
+     * name = nome do appw
+     * description = descricao do app
+     * price = preco do app (atualizado com o novo custo)
+     */
+
+    /*
+     * raw json
+     * {
+     * "custo" : (250.00)
+     * }
+     */
+
+
+    App app = appService.acharPorId(idAplicativo);
+    
+
+    if (app == null) {
+        throw new IllegalArgumentException("Aplicativo não encontrado");
+    }
+    
+
+    Float novoCusto = Float.valueOf((String) msgRequest.get("custo"));
+    appService.atualizaCusto(idAplicativo, novoCusto);
+    App updatedApp = appService.save(app);
+    return updatedApp;
+}
     // @GetMapping("teste")
     // @CrossOrigin(origins="*")
     // public void cadastrar() {
